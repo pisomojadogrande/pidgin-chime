@@ -80,7 +80,7 @@ void             chime_connection_set_device_status_async    (ChimeConnection   
 gboolean         chime_connection_set_device_status_finish   (ChimeConnection  *self,
                                                               GAsyncResult     *result,
                                                               GError          **error);
-
+void             chime_connection_renew_session_token        (ChimeConnection  *self);
 const gchar     *chime_connection_get_session_token          (ChimeConnection  *self);
 
 void             chime_connection_set_session_token          (ChimeConnection  *self,

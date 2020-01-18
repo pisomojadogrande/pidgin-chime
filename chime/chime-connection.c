@@ -53,6 +53,7 @@ G_DEFINE_QUARK(chime-error-quark, chime_error)
 G_DEFINE_TYPE(ChimeConnection, chime_connection, G_TYPE_OBJECT)
 
 static void soup_msg_cb(SoupSession *soup_sess, SoupMessage *msg, gpointer _cmsg);
+static void chime_renew_token(ChimeConnection *self);
 
 static void
 chime_connection_finalize(GObject *object)
@@ -671,6 +672,12 @@ chime_connection_set_presence_finish(ChimeConnection  *self,
 	g_return_val_if_fail(g_task_is_valid(result, self), FALSE);
 
 	return g_task_propagate_boolean(G_TASK(result), error);
+}
+
+void
+chime_connection_renew_session_token(ChimeConnection *self)
+{
+    chime_renew_token(self);
 }
 
 const gchar *
